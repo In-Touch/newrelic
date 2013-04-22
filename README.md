@@ -2,7 +2,15 @@
 
 This is simply a pass-through wrapper to the [NewRelic PHP Agent API](https://newrelic.com/docs/php/the-php-api) in a namespaced class available via composer.  No magic here.
 
-###Use
+###Installation
+Add `intouch/newrelic` to your composer requirements:
+
+    "require": {
+        "intouch/newrelic": ">=1.0.2"
+    }
+
+
+###Basic Use
 
 The most basic use is to simple include the class:
 
