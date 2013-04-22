@@ -1,5 +1,9 @@
 {
     "name": "intouch/newrelic",
+    "type": "library",
+    "keywords": ["NewRelic", "New Relic"],
+    "homepage": "http://github.com/In-Touch/newrelic/",
+    "license": "MIT",
     "description": "Namespaced Wrapper for NewRelic PHP Agent",
     "authors": [
         {
