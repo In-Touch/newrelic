@@ -25,7 +25,7 @@ class Newrelic
      */
     public function __construct( $throw = false )
     {
-        $this->installed = function_exists( 'newrelic_set_appname' );
+        $this->installed = extension_loaded( 'newrelic' ) && function_exists( 'newrelic_set_appname' );
         if ( $throw && !$this->installed )
         {
             throw new \RuntimeException('NewRelic PHP Agent does not appear to be installed');
