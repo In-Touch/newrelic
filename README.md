@@ -1,3 +1,5 @@
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/2b89df0c6f1ce6e999edfe2a60946481 "githalytics.com")](http://githalytics.com/In-Touch/newrelic)
+
 # NewRelic PHP Agent API Wrapper
 
 This is simply a pass-through wrapper to the [NewRelic PHP Agent API](https://newrelic.com/docs/php/the-php-api) in a namespaced class available via composer.  No magic here.
