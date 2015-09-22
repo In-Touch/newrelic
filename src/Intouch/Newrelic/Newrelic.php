@@ -38,11 +38,11 @@ class Newrelic
      *
      * @throws \RuntimeException
      */
-    public function __construct( $throw = false )
+    public function __construct($throw = false)
     {
-        $this->installed = extension_loaded( 'newrelic' ) && function_exists( 'newrelic_set_appname' );
-        if ( $throw && !$this->installed )
-        {
+        $this->installed = extension_loaded('newrelic') && function_exists('newrelic_set_appname');
+
+        if ($throw && !$this->installed) {
             throw new \RuntimeException('NewRelic PHP Agent does not appear to be installed');
         }
     }
@@ -76,9 +76,9 @@ class Newrelic
      *
      * @return bool
      */
-    public function setAppName( $name, $license = "", $xmit = false )
+    public function setAppName($name, $license = "", $xmit = false)
     {
-        return $this->call( 'newrelic_set_appname', array( $name, $license, $xmit ) );
+        return $this->call('newrelic_set_appname', array($name, $license, $xmit));
     }
 
     /**
@@ -98,15 +98,12 @@ class Newrelic
      *
      * @return mixed
      */
-    public function noticeError( $message, $exception = null )
+    public function noticeError($message, $exception = null)
     {
-        if ( $exception instanceof \Exception )
-        {
-            return $this->call( 'newrelic_notice_error', array( $message, $exception ) );
-        }
-        else
-        {
-            return $this->call( 'newrelic_notice_error', array( $message ) );
+        if ($exception instanceof \Exception) {
+            return $this->call('newrelic_notice_error', array($message, $exception));
+        } else {
+            return $this->call('newrelic_notice_error', array($message));
         }
     }
 
@@ -126,9 +123,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function nameTransaction( $name )
+    public function nameTransaction($name)
     {
-        return $this->call( 'newrelic_name_transaction', array( $name ) );
+        return $this->call('newrelic_name_transaction', array($name));
     }
 
     /**
@@ -143,7 +140,7 @@ class Newrelic
      */
     public function endOfTransaction()
     {
-        return $this->call( 'newrelic_end_of_transaction' );
+        return $this->call('newrelic_end_of_transaction');
     }
 
     /**
@@ -164,9 +161,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function endTransaction( $ignore = false )
+    public function endTransaction($ignore = false)
     {
-        return $this->call( 'newrelic_end_transaction', array( $ignore ) );
+        return $this->call('newrelic_end_transaction', array($ignore));
     }
 
     /**
@@ -182,9 +179,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function startTransaction( $name, $license = "" )
+    public function startTransaction($name, $license = "")
     {
-        return $this->call( 'newrelic_start_transaction', array( $name, $license ) );
+        return $this->call('newrelic_start_transaction', array($name, $license));
     }
 
     /**
@@ -196,7 +193,7 @@ class Newrelic
      */
     public function ignoreTransaction()
     {
-        return $this->call( 'newrelic_ignore_transaction' );
+        return $this->call('newrelic_ignore_transaction');
     }
 
     /**
@@ -207,7 +204,7 @@ class Newrelic
      */
     public function ignoreApdex()
     {
-        return $this->call( 'newrelic_ignore_apdex' );
+        return $this->call('newrelic_ignore_apdex');
     }
 
     /**
@@ -218,9 +215,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function backgroundJob( $flag = true )
+    public function backgroundJob($flag = true)
     {
-        return $this->call( 'newrelic_background_job', array( $flag ) );
+        return $this->call('newrelic_background_job', array($flag));
     }
 
     /**
@@ -232,9 +229,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function captureParams( $enable = true )
+    public function captureParams($enable = true)
     {
-        return $this->call( 'newrelic_capture_params', array( $enable ) );
+        return $this->call('newrelic_capture_params', array($enable));
     }
 
     /**
@@ -252,9 +249,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function customMetric( $name, $value )
+    public function customMetric($name, $value)
     {
-        return $this->call( 'newrelic_custom_metric', array( $name, $value ) );
+        return $this->call('newrelic_custom_metric', array($name, $value));
     }
 
     /**
@@ -267,9 +264,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function addCustomParameter( $key, $value )
+    public function addCustomParameter($key, $value)
     {
-        return $this->call( 'newrelic_add_custom_parameter', array( $key, $value ) );
+        return $this->call('newrelic_add_custom_parameter', array($key, $value));
     }
 
     /**
@@ -282,9 +279,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function addCustomTracer( $function_name )
+    public function addCustomTracer($function_name)
     {
-        return $this->call( 'newrelic_add_custom_tracer', array( $function_name ) );
+        return $this->call('newrelic_add_custom_tracer', array($function_name));
     }
 
     /**
@@ -296,9 +293,9 @@ class Newrelic
      *
      * @return string
      */
-    public function getBrowserTimingHeader( $flag = true )
+    public function getBrowserTimingHeader($flag = true)
     {
-        return $this->call( 'newrelic_get_browser_timing_header', array( $flag ) );
+        return $this->call('newrelic_get_browser_timing_header', array($flag));
     }
 
     /**
@@ -310,9 +307,9 @@ class Newrelic
      *
      * @return string
      */
-    public function getBrowserTimingFooter( $flag = true )
+    public function getBrowserTimingFooter($flag = true)
     {
-        return $this->call( 'newrelic_get_browser_timing_footer', array( $flag ) );
+        return $this->call('newrelic_get_browser_timing_footer', array($flag));
     }
 
     /**
@@ -323,7 +320,7 @@ class Newrelic
      */
     public function disableAutoRUM()
     {
-        return $this->call( 'newrelic_disable_autorum' );
+        return $this->call('newrelic_disable_autorum');
     }
 
     /**
@@ -337,9 +334,9 @@ class Newrelic
      *
      * @return mixed
      */
-    public function setUserAttributes( $user = "", $account = "", $product = "" )
+    public function setUserAttributes($user = "", $account = "", $product = "")
     {
-        return $this->call( 'newrelic_set_user_attributes', array( $user, $account, $product ) );
+        return $this->call('newrelic_set_user_attributes', array($user, $account, $product));
     }
 
     /**
@@ -350,13 +347,12 @@ class Newrelic
      *
      * @return mixed
      */
-    protected function call( $method, array $params = array() )
+    protected function call($method, array $params = array())
     {
-        if ( !$this->installed )
-        {
+        if (!$this->installed) {
             return false;
         }
 
-        return call_user_func_array( $method, $params );
+        return call_user_func_array($method, $params);
     }
 }
