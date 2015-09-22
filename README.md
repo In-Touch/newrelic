@@ -1,4 +1,4 @@
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/2b89df0c6f1ce6e999edfe2a60946481 "githalytics.com")](http://githalytics.com/In-Touch/newrelic)
+[![Build Status](https://travis-ci.org/In-Touch/newrelic.svg?branch=master)](https://travis-ci.org/In-Touch/newrelic)
 
 # NewRelic PHP Agent API Wrapper
 
