@@ -4,13 +4,13 @@
 
 This is simply a pass-through wrapper to the [NewRelic PHP Agent API](https://newrelic.com/docs/php/the-php-api) in a namespaced class available via composer.  No magic here.
 
-###Installation
-Add `intouch/newrelic` to your composer requirements:
+### Installation
 
-    "require": {
-        "intouch/newrelic": ">=1.0.2"
-    }
+Run
 
+```
+$ composer require intouch/newrelic
+```
 
 ###Basic Use
 
