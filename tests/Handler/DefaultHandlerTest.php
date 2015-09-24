@@ -6,6 +6,12 @@ use Intouch\Newrelic\Handler\DefaultHandler;
 
 class DefaultHandlerTest extends \PHPUnit_Framework_TestCase
 {
+    public function testImplementsInterface()
+    {
+        $handler = new DefaultHandler();
+
+        $this->assertInstanceOf('Intouch\Newrelic\Handler\Handler', $handler);
+    }
     public function testHandleCallsFunctionWithArguments()
     {
         $functionName = 'strpos';
