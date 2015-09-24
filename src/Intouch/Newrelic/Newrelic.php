@@ -18,6 +18,7 @@ namespace Intouch\Newrelic;
 
 use Intouch\Newrelic\Handler\DefaultHandler;
 use Intouch\Newrelic\Handler\Handler;
+use Intouch\Newrelic\Handler\NullHandler;
 
 /**
  * Wrapper class for the NewRelic PHP Agent API methods.
@@ -55,7 +56,11 @@ class Newrelic
             throw new \RuntimeException('NewRelic PHP Agent does not appear to be installed');
         }
 
-        $this->handler = $handler ? $handler : new DefaultHandler();
+        if ($handler === null) {
+            $handler = $this->installed ? new DefaultHandler() : new NullHandler();
+        }
+
+        $this->handler = $handler;
     }
 
     /**
