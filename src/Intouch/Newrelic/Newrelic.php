@@ -365,10 +365,6 @@ class Newrelic
      */
     protected function call($method, array $params = array())
     {
-        if (!$this->installed) {
-            return false;
-        }
-
         return $this->handler->handle($method, $params);
     }
 }
