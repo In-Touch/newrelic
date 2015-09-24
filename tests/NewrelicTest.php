@@ -15,7 +15,7 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructSetsHandler()
     {
-        $handler = $this->getDefaultHandlerMock();
+        $handler = $this->getHandlerMock();
 
         $agent = new Newrelic(false, $handler);
 
@@ -76,10 +76,10 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|DefaultHandler
+     * @return \PHPUnit_Framework_MockObject_MockObject|Handler
      */
-    private function getDefaultHandlerMock()
+    private function getHandlerMock()
     {
-        return $this->getMockBuilder('Intouch\Newrelic\Handler\DefaultHandler')->getMock();
+        return $this->getMockBuilder('Intouch\Newrelic\Handler\Handler')->getMock();
     }
 }
