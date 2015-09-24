@@ -42,10 +42,11 @@ class Newrelic
      * NewRelic PHP agent methods are not found.
      *
      * @param bool $throw
+     * @param DefaultHandler $handler
      *
      * @throws \RuntimeException
      */
-    public function __construct($throw = false)
+    public function __construct($throw = false, DefaultHandler $handler = null)
     {
         $this->installed = extension_loaded('newrelic') && function_exists('newrelic_set_appname');
 
@@ -53,7 +54,7 @@ class Newrelic
             throw new \RuntimeException('NewRelic PHP Agent does not appear to be installed');
         }
 
-        $this->handler = new DefaultHandler();
+        $this->handler = $handler ? $handler : new DefaultHandler();
     }
 
     /**

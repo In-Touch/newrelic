@@ -13,6 +13,15 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
         $this->assertAttributeInstanceOf('Intouch\Newrelic\Handler\DefaultHandler', 'handler', $agent);
     }
 
+    public function testConstructSetsHandler()
+    {
+        $handler = $this->getDefaultHandlerMock();
+
+        $agent = new Newrelic(false, $handler);
+
+        $this->assertAttributeSame($handler, 'handler', $agent);
+    }
+
     public function testIsExtensionLoaded()
     {
         $agent = new Newrelic();
@@ -64,5 +73,13 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
     private function isExtensionLoaded()
     {
         return extension_loaded('newrelic') && function_exists('newrelic_set_appname');
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|DefaultHandler
+     */
+    private function getDefaultHandlerMock()
+    {
+        return $this->getMockBuilder('Intouch\Newrelic\Handler\DefaultHandler')->getMock();
     }
 }
