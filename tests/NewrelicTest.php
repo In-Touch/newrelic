@@ -6,6 +6,13 @@ use Intouch\Newrelic\Newrelic;
 
 class NewrelicTest extends \PHPUnit_Framework_TestCase
 {
+    public function testConstructCreatesDefaultHandler()
+    {
+        $agent = new Newrelic();
+
+        $this->assertAttributeInstanceOf('Intouch\Newrelic\Handler\DefaultHandler', 'handler', $agent);
+    }
+
     public function testIsExtensionLoaded()
     {
         $agent = new Newrelic();
