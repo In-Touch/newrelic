@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Intouch\\Newrelic\\": "src/Intouch/Newrelic"
+            "Intouch\\Newrelic\\": "src"
         }
     }
 }
