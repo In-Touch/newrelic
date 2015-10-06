@@ -16,6 +16,10 @@
  */
 namespace Intouch\Newrelic;
 
+use Intouch\Newrelic\Handler\DefaultHandler;
+use Intouch\Newrelic\Handler\Handler;
+use Intouch\Newrelic\Handler\NullHandler;
+
 /**
  * Wrapper class for the NewRelic PHP Agent API methods.
  *
@@ -31,20 +35,32 @@ class Newrelic
     protected $installed;
 
     /**
+     * @var Handler
+     */
+    private $handler;
+
+    /**
      * Allows pass-through if NewRelic is not installed (default) or optionally throws a runtime exception is the
      * NewRelic PHP agent methods are not found.
      *
      * @param bool $throw
+     * @param Handler $handler
      *
      * @throws \RuntimeException
      */
-    public function __construct($throw = false)
+    public function __construct($throw = false, Handler $handler = null)
     {
         $this->installed = extension_loaded('newrelic') && function_exists('newrelic_set_appname');
 
         if ($throw && !$this->installed) {
             throw new \RuntimeException('NewRelic PHP Agent does not appear to be installed');
         }
+
+        if ($handler === null) {
+            $handler = $this->installed ? new DefaultHandler() : new NullHandler();
+        }
+
+        $this->handler = $handler;
     }
 
     /**
@@ -349,10 +365,6 @@ class Newrelic
      */
     protected function call($method, array $params = array())
     {
-        if (!$this->installed) {
-            return false;
-        }
-
-        return call_user_func_array($method, $params);
+        return $this->handler->handle($method, $params);
     }
 }
