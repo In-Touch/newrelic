@@ -356,6 +356,26 @@ class Newrelic
     }
 
     /**
+     * Records a New Relic Insights {@link https://docs.newrelic.com/docs/insights/new-relic-insights/understanding-insights/new-relic-insights}
+     * custom event.
+     *
+     * For more information, see Inserting custom events with the PHP agent {@link https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/inserting-custom-events-new-relic-apm-agents#php-att}.
+     *
+     * The attributes parameter is expected to be an associative array: the keys should be the attribute names
+     * (which may be up to 255 characters in length), and the values should be scalar values: arrays and objects are
+     * not supported.
+     *
+     * @param string $name
+     * @param array $attributes
+     *
+     * @return mixed
+     */
+    public function recordCustomEvent($name, array $attributes)
+    {
+        return $this->call('newrelic_record_custom_event', array($name, $attributes));
+    }
+
+    /**
      * Call the named method with the given params.  Return false if the NewRelic PHP agent is not available.
      *
      * @param string $method

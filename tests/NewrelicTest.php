@@ -331,6 +331,30 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($result, $agent->setAppName($name, $licence, $xmit));
     }
 
+    public function testRecordCustomEvent()
+    {
+        $name = 'foo';
+        $attributes = array(
+            'bar' => 'baz',
+            'qux' => false,
+        );
+
+        $result = true;
+
+        $handler = $this->getHandlerSpy(
+            'newrelic_record_custom_event',
+            array(
+                $name,
+                $attributes,
+            ),
+            $result
+        );
+
+        $agent = new Newrelic(false, $handler);
+
+        $this->assertSame($result, $agent->recordCustomEvent($name, $attributes));
+    }
+
     public function testSetUserAttributes()
     {
         $user = 'foo';
