@@ -356,10 +356,12 @@ class Newrelic
     }
 
     /**
-     * Records a New Relic Insights {@link https://docs.newrelic.com/docs/insights/new-relic-insights/understanding-insights/new-relic-insights}
+     * Records a New Relic Insights
+     * {@link https://docs.newrelic.com/docs/insights/new-relic-insights/understanding-insights/new-relic-insights}
      * custom event.
      *
-     * For more information, see Inserting custom events with the PHP agent {@link https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/inserting-custom-events-new-relic-apm-agents#php-att}.
+     * For more information, see Inserting custom events with the PHP agent
+     * {@link https://docs.newrelic.com/docs/insights/new-relic-insights/adding-querying-data/inserting-custom-events-new-relic-apm-agents#php-att}.
      *
      * The attributes parameter is expected to be an associative array: the keys should be the attribute names
      * (which may be up to 255 characters in length), and the values should be scalar values: arrays and objects are
