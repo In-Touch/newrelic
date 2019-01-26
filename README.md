@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/In-Touch/newrelic.svg?branch=master)](https://travis-ci.org/In-Touch/newrelic)
+[![Build Status](https://img.shields.io/travis/In-Touch/newrelic/master.svg?style=flat-square)](https://travis-ci.org/In-Touch/laravel-aws-lambda)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/intouch/newrelic.svg?style=flat-square)](https://packagist.org/packages/intouch/laravel-aws-lambda)
+[![Total Downloads](https://img.shields.io/packagist/dt/intouch/newrelic.svg?style=flat-square)](https://packagist.org/packages/intouch/laravel-aws-lambda)
 
 # NewRelic PHP Agent API Wrapper
 
