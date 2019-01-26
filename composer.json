@@ -18,8 +18,8 @@
         "phpunit/phpunit": "^4.8"
     },
     "autoload": {
-        "psr-0": {
-            "Intouch\\Newrelic": "src/"
+        "psr-4": {
+            "Intouch\\Newrelic\\": "src"
         }
     }
 }
