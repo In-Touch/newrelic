@@ -3,7 +3,7 @@
     "type": "library",
     "keywords": ["NewRelic", "New Relic"],
     "homepage": "http://github.com/In-Touch/newrelic/",
-    "license": "Apache 2.0",
+    "license": "Apache-2.0",
     "description": "Namespaced Wrapper for NewRelic PHP Agent",
     "authors": [
         {
