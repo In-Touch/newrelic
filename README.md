@@ -1,4 +1,5 @@
 [![Build Status](https://img.shields.io/travis/In-Touch/newrelic/master.svg?style=flat-square)](https://travis-ci.org/In-Touch/newrelic)
+[![Coveralls](https://img.shields.io/coveralls/github/In-Touch/newrelic/master.svg?style=flat-square)](https://coveralls.io/github/In-Touch/newrelic)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/intouch/newrelic.svg?style=flat-square)](https://packagist.org/packages/intouch/newrelic)
 [![Total Downloads](https://img.shields.io/packagist/dt/intouch/newrelic.svg?style=flat-square)](https://packagist.org/packages/intouch/newrelic)
 [![StyleCI](https://styleci.io/repos/9600626/shield)](https://styleci.io/repos/9600626)

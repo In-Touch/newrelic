@@ -3,8 +3,9 @@
 namespace Intouch\Newrelic\Test;
 
 use Intouch\Newrelic\Newrelic;
+use PHPUnit\Framework\TestCase;
 
-class NewrelicTest extends \PHPUnit_Framework_TestCase
+class NewrelicTest extends TestCase
 {
     public function testConstructCreatesHandler()
     {
@@ -40,7 +41,7 @@ class NewrelicTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Can not run test when newrelic extension is loaded');
         }
 
-        $this->setExpectedException('RuntimeException', 'NewRelic PHP Agent does not appear to be installed');
+        $this->expectException('RuntimeException', 'NewRelic PHP Agent does not appear to be installed');
 
         new Newrelic(true);
     }

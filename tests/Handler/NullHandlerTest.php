@@ -3,8 +3,9 @@
 namespace Intouch\Newrelic\Test\Handler;
 
 use Intouch\Newrelic\Handler\NullHandler;
+use PHPUnit\Framework\TestCase;
 
-class NullHandlerTest extends \PHPUnit_Framework_TestCase
+class NullHandlerTest extends TestCase
 {
     public function testImplementsInterface()
     {
