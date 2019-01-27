@@ -1,28 +1,20 @@
 language: php
 
-sudo: false
-
 php:
   - 7
   - 7.1
   - 7.2
   - 7.3
 
-env:
-  global:
-    - secure: "SJm4dSGD8+KshqgJdcb9bYd7bMjTPLkHjk/B+cRVcNLFAFQpoHQSfr002eDhNq6eznTVMO2x5T2SWXNHJeWZ4v5L4tv9M4McUPzFuNwiWoWhQiUhmW4iWpabC/WqEpr+pe0YJbvHVjKDRDdUK4FlnMUC6u3czpT8YWJC0Qio7TU="
-
 cache:
   directories:
     - $HOME/.composer/cache
-
-before_install:
-  - composer config github-oauth.github.com $GITHUB_TOKEN
-  - composer self-update
-  - composer validate
 
 install:
   - composer install --prefer-dist
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+
+after_script:
+  - php vendor/bin/php-coveralls -v -x coverage.clover -o coveralls-upload.json
