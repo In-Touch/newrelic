@@ -27,4 +27,11 @@ class NullHandlerTest extends TestCase
 
         $this->assertFalse($handler->handle($functionName, $arguments));
     }
+
+    public function testIsDistributedTracingEnabledReturnsFalse()
+    {
+        $handler = new NullHandler();
+
+        $this->assertFalse($handler->isDistributedTracingEnabled());
+    }
 }

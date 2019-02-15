@@ -11,4 +11,9 @@ interface Handler
      * @return mixed
      */
     public function handle($functionName, array $arguments = array());
+
+    /**
+     * @return bool
+     */
+    public function isDistributedTracingEnabled();
 }

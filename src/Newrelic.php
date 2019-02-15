@@ -57,7 +57,9 @@ class Newrelic
         }
 
         if ($handler === null) {
-            $handler = $this->installed ? new DefaultHandler() : new NullHandler();
+            $handler = $this->installed
+                ? new DefaultHandler(function_exists('newrelic_create_distributed_trace_payload'))
+                : new NullHandler();
         }
 
         $this->handler = $handler;
@@ -381,11 +383,15 @@ class Newrelic
      * Create a newrelic distributed trace payload.
      * {@link https://docs.newrelic.com/docs/agents/php-agent/features/distributed-tracing-php#manual}
      *
-     * @return newrelic\DistributedTracePayload
+     * @return newrelic\DistributedTracePayload|false
      */
     public function createDistributedTracePayload()
     {
-        return $this->call('newrelic_create_distributed_trace_payload');
+        if ($this->handler->isDistributedTracingEnabled()) {
+            return $this->call('newrelic_create_distributed_trace_payload');
+        }
+
+        return false;
     }
 
     /**
@@ -401,7 +407,11 @@ class Newrelic
      */
     public function acceptDistributedTracePayload($textPayload)
     {
-        return $this->call('newrelic_accept_distributed_trace_payload', array($textPayload));
+        if ($this->handler->isDistributedTracingEnabled()) {
+            return $this->call('newrelic_accept_distributed_trace_payload', array($textPayload));
+        }
+
+        return false;
     }
 
     /**
@@ -417,7 +427,11 @@ class Newrelic
      */
     public function acceptDistributedTracePayloadHttpSafe($httpSafePayload)
     {
-        return $this->call('newrelic_accept_distributed_trace_payload_httpsafe', array($httpSafePayload));
+        if ($this->handler->isDistributedTracingEnabled()) {
+            return $this->call('newrelic_accept_distributed_trace_payload_httpsafe', array($httpSafePayload));
+        }
+
+        return false;
     }
 
     /**

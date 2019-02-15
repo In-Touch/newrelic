@@ -409,10 +409,25 @@ class NewrelicTest extends TestCase
             array(),
             $result
         );
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(true);
 
         $agent = new Newrelic(false, $handler);
 
         $this->assertSame($result, $agent->createDistributedTracePayload());
+    }
+
+    public function testCreateDistributedTracePayloadNotEnabled()
+    {
+        $handler = $this->getHandlerMock();
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(false);
+
+        $agent = new Newrelic(false, $handler);
+
+        $this->assertFalse($agent->createDistributedTracePayload());
     }
 
     public function testAcceptDistributedTracePayload()
@@ -427,10 +442,27 @@ class NewrelicTest extends TestCase
             ),
             $result
         );
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(true);
 
         $agent = new Newrelic(false, $handler);
 
         $this->assertSame($result, $agent->acceptDistributedTracePayload($payload));
+    }
+
+    public function testAcceptDistributedTracePayloadNotEnabled()
+    {
+        $payload = 'payload';
+
+        $handler = $this->getHandlerMock();
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(false);
+
+        $agent = new Newrelic(false, $handler);
+
+        $this->assertFalse($agent->acceptDistributedTracePayload($payload));
     }
 
     public function testAcceptDistributedTracePayloadHttpSafe()
@@ -445,10 +477,27 @@ class NewrelicTest extends TestCase
             ),
             $result
         );
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(true);
 
         $agent = new Newrelic(false, $handler);
 
         $this->assertSame($result, $agent->acceptDistributedTracePayloadHttpSafe($payload));
+    }
+
+    public function testAcceptDistributedTracePayloadHttpSafeNotEnabled()
+    {
+        $payload = 'payload';
+
+        $handler = $this->getHandlerMock();
+        $handler->expects($this->once())
+            ->method('isDistributedTracingEnabled')
+            ->willReturn(false);
+
+        $agent = new Newrelic(false, $handler);
+
+        $this->assertFalse($agent->acceptDistributedTracePayloadHttpSafe($payload));
     }
 
     /**
