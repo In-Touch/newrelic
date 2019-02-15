@@ -378,6 +378,49 @@ class Newrelic
     }
 
     /**
+     * Create a newrelic distributed trace payload.
+     * {@link https://docs.newrelic.com/docs/agents/php-agent/features/distributed-tracing-php#manual}
+     *
+     * @return newrelic\DistributedTracePayload
+     */
+    public function createDistributedTracePayload()
+    {
+        return $this->call('newrelic_create_distributed_trace_payload');
+    }
+
+    /**
+     * Accept a distributed trace payload.
+     *
+     * Generate a payload using:
+     * $payload = newrelic_create_distributed_trace_payload();
+     * $textPayload = $payload->Text();
+     *
+     * @param string $textPayload
+     *
+     * @return bool
+     */
+    public function acceptDistributedTracePayload($textPayload)
+    {
+        return $this->call('newrelic_accept_distributed_trace_payload', array($textPayload));
+    }
+
+    /**
+     * Accept a distributed trace http safe payload.
+     *
+     * Generate an http safe payload using:
+     * $payload = newrelic_create_distributed_trace_payload();
+     * $httpSafePayload = $payload->httpSafe();
+     *
+     * @param string $httpSafePayload
+     *
+     * @return bool
+     */
+    public function acceptDistributedTracePayloadHttpSafe($httpSafePayload)
+    {
+        return $this->call('newrelic_accept_distributed_trace_payload_httpsafe', array($httpSafePayload));
+    }
+
+    /**
      * Call the named method with the given params.  Return false if the NewRelic PHP agent is not available.
      *
      * @param string $method
