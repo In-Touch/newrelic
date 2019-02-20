@@ -57,9 +57,7 @@ class Newrelic
         }
 
         if ($handler === null) {
-            $handler = $this->installed
-                ? new DefaultHandler(function_exists('newrelic_create_distributed_trace_payload'))
-                : new NullHandler();
+            $handler = $this->installed ? new DefaultHandler(function_exists('newrelic_create_distributed_trace_payload')) : new NullHandler();
         }
 
         $this->handler = $handler;
