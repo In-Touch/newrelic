@@ -8,4 +8,9 @@ class NullHandler implements Handler
     {
         return false;
     }
+
+    public function isDistributedTracingEnabled()
+    {
+        return false;
+    }
 }
